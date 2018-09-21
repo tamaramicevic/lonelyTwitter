@@ -38,8 +38,13 @@ public class LonelyTwitterActivity extends Activity {
 
 			public void onClick(View v) {
 				String text = bodyText.getText().toString();
+				ImportantTweet importantTweet = new ImportantTweet();
+				try {
+					importantTweet.setMessage(text);
+				} catch(TooLongTweetException e) {
+
+				}
 				saveInFile(text, new Date(System.currentTimeMillis()));
-				finish();
 
 			}
 		});
