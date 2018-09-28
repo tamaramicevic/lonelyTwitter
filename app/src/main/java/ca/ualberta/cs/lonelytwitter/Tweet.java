@@ -11,21 +11,17 @@ public abstract class Tweet implements Tweetable {
     private List<Mood> moods;
 
     //Empty argument constructor with default values
-    Tweet() {
-        //Must use the 'this' keyword in order to specify the current object message = message does nothing!
-        this.date = new Date();
-        this.message = "I am a default message!";
-    }
-
-    //Overloading: so that we can specify the tweet content
-    Tweet(String message) {
-        this.date = new Date();
-        this.message = message;
-    }
-
-    public String getMessage() {
-        return this.message;
-    }
+//    Tweet() {
+//        //Must use the 'this' keyword in order to specify the current object message = message does nothing!
+//        this.date = new Date();
+//        this.message = "I am a default message!";
+//    }
+//
+//    //Overloading: so that we can specify the tweet content
+//    Tweet(String message) {
+//        this.date = new Date();
+//        this.message = message;
+//    }
 
     public void setMessage(String message) throws TweetTooLongException {
         if (message.length() <= this.MAX_CHARS ) {
@@ -35,8 +31,22 @@ public abstract class Tweet implements Tweetable {
         }
     }
 
-    public Date getDate() { return this.date; }
+    public String getMessage() {
+        return this.message;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
 
     //No method body implemented! We leave that up to the subclasses (they MUST implement it)
     public abstract Boolean isImportant();
+
+    public String toString() {
+        return this.date.toString()+" | "+this.message;
+    }
 }
